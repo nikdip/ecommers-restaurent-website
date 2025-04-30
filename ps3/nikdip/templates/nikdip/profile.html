@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .profile-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-info img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid dodgerblue;
+        }
+
+        .profile-info h3 {
+            margin-top: 10px;
+        }
+
+        .profile-details {
+            padding: 10px;
+        }
+
+        .profile-details label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .profile-details input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background: dodgerblue;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0073e6;
+        }
+
+        .logout-btn {
+            background: red;
+        }
+
+        .logout-btn:hover {
+            background: darkred;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>User Profile</h2>
+    
+    <div class="profile-info">
+        <img src="{{ user.profile.image.url }}" alt="Profile Picture">
+        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+        <p>@{{ user.username }}</p>
+    </div>
+
+    <div class="profile-details">
+        <label>Email:</label>
+        <input type="email" value="{{ user.email }}" readonly>
+
+        <label>Username:</label>
+        <input type="text" value="{{ user.username }}" readonly>
+
+        <label>Phone Number:</label>
+        <input type="text" value="{{ user.profile.phone }}" readonly>
+
+        <label>Address:</label>
+        <input type="text" value="{{ user.profile.address }}" readonly>
+
+        <a href="{% url 'edit_profile' %}" class="btn">Edit Profile</a>
+        <a href="#" class="btn">Change Password</a>
+        <a href="#" class="btn">View Order History</a>
+        <a href="{% url 'logout' %}" class="btn logout-btn">Logout</a>
+    </div>
+</div>
+
+</body>
+</html>

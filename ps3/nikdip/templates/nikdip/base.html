@@ -1,0 +1,26 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nikdip | {% block title %}Home{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static "nikdip/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "nikdip/css/main.css" %}">
+  </head>
+  <body>
+      
+      {% include "nikdip/navbar.html" %}
+      
+      {% block content %}
+      index page
+      {% endblock content %}
+      
+      {% include "nikdip/footer.html" %}
+
+       
+    <script src="{% static "nikdip/js/jquery.js" %}"></script>
+    <script src="{% static "nikdip/js/popper.js" %}"></script>
+    <script src="{% static "nikdip/js/bootstrap.min.js" %}"></script>
+  </body>
+</html>

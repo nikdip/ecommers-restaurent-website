@@ -1,0 +1,108 @@
+<div class="snacks-container container mt-5" id='snack'>
+    <h2 class="text-center mb-4 text-uppercase fw-bold" style="color: #49274A;">Delicious Snacks</h2>
+    <div class="row justify-content-center">
+        {% for item in snacks %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4 d-flex">
+            <div class="card menu-card w-100">
+                <div class="image-wrapper" style="height: 220px; overflow: hidden;">
+                    <img src="{{ item.menu_image.url }}" class="card-img-top w-100 h-100" 
+                         alt="{{ item.name }}" 
+                         style="object-fit: cover; object-position: center; transition: transform 0.3s ease;">
+                </div>
+                <div class="card-body text-center d-flex flex-column" style="background-color: #F8EEE7;">
+                    <h5 class="card-title fw-bold mb-2" style="color: #49274A;">{{ item.name }}</h5>
+                    <p class="card-text mb-3 flex-grow-1" style="color: #94618E;">{{ item.description }}</p>
+                    <h5 class="fw-bold mb-3" style="color: #49274A;">₹{{ item.original_price }}</h5>
+                    <div class="d-flex justify-content-center gap-2">
+                        <a href="{% url 'buy_now' item.id 'snacks' %}" class="btn btn-primary flex-grow-1">
+                            <i class="fa fa-bolt me-2"></i> Buy Now
+                        </a>
+                        <a href="{% url 'add_to_cart' item.id 'snack' %}" class="btn btn-secondary flex-grow-1">
+                            <i class="fa fa-shopping-cart me-2"></i> Add to Cart
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+  
+  <style>
+    .snacks-container .menu-card {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(148, 97, 142, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid #F4DECB;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+  
+    .snacks-container .menu-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(148, 97, 142, 0.2);
+    }
+  
+    .snacks-container .menu-card:hover .card-img-top {
+        transform: scale(1.05);
+    }
+  
+    .snacks-container .image-wrapper {
+        position: relative;
+    }
+  
+    .snacks-container .card-body {
+        padding: 20px;
+    }
+  
+    .snacks-container .btn {
+        padding: 10px 15px;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+    }
+  
+    .snacks-container .btn-primary {
+        background-color: #94618E;
+        color: #F8EEE7;
+    }
+  
+    .snacks-container .btn-primary:hover {
+        background-color: #49274A;
+        transform: scale(1.03);
+    }
+  
+    .snacks-container .btn-secondary {
+        background-color: #F4DECB;
+        color: #49274A;
+    }
+  
+    .snacks-container .btn-secondary:hover {
+        background-color: #94618E;
+        color: #F8EEE7;
+        transform: scale(1.03);
+    }
+  
+    @media (max-width: 768px) {
+        .snacks-container .col-md-6 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        
+        .snacks-container .btn {
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+        
+        .snacks-container .image-wrapper {
+            height: 180px;
+        }
+    }
+  </style>

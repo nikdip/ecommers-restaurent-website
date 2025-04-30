@@ -1,0 +1,174 @@
+<body>
+    {% load static %}
+    <section class="py-5" style="background-color: #F4DECB;">
+        <div class="container">
+            <h3 class="mb-4 fw-bold text-center" style="color: #49274A;">Shop by Categories</h3>
+            <div class="category-row">
+                <div class="category-card">
+                    <div class="icon-container">
+                        <img src="{% static 'nikdip/svg/coffee.svg' %}" alt="Coffee" class="category-icon">
+                    </div>
+                    <p>Coffee & Tea</p>
+                </div>
+                <div class="category-card">
+                    <div class="icon-container">
+                        <img src="{% static 'nikdip/svg/fruit-svg.svg' %}" alt="Fruits" class="category-icon">
+                    </div>
+                    <p>Fruits</p>
+                </div>
+                <div class="category-card">
+                    <div class="icon-container">
+                        <img src="{% static 'nikdip/svg/veg.svg' %}" alt="Vegetarian" class="category-icon">
+                    </div>
+                    <p>Vegetarian</p>
+                </div>
+                <div class="category-card">
+                    <div class="icon-container">
+                        <img src="{% static 'nikdip/svg/drinks.svg' %}" alt="Drinks" class="category-icon">
+                    </div>
+                    <p>Drinks</p>
+                </div>
+                <div class="category-card">
+                    <div class="icon-container">
+                        <img src="{% static 'nikdip/svg/bakery.svg' %}" alt="Bakery" class="category-icon">
+                    </div>
+                    <p>Bakery</p>
+                </div>
+                <div class="category-card">
+                    <div class="icon-container">
+                        <img src="{% static 'nikdip/svg/snacks.svg' %}" alt="Snacks" class="category-icon">
+                    </div>
+                    <p>Snacks</p>
+                </div>
+                <div class="category-card">
+                    <div class="icon-container">
+                        <img src="{% static 'nikdip/svg/dairy.svg' %}" alt="Dairy" class="category-icon">
+                    </div>
+                    <p>Dairy</p>
+                </div>
+                <div class="category-card">
+                    <div class="icon-container">
+                        <img src="{% static 'nikdip/svg/fish.svg' %}" alt="Fast Food" class="category-icon">
+                    </div>
+                    <p>Fast Food</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .category-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding: 10px 0;
+        }
+
+        .category-card {
+            width: 110px;
+            text-align: center;
+            padding: 15px 10px;
+            background-color: #F8EEE7;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(148, 97, 142, 0.1);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(148, 97, 142, 0.2);
+            background-color: #94618E;
+        }
+
+        .category-card:hover p {
+            color: #F8EEE7;
+        }
+
+        .icon-container {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F4DECB;
+            border-radius: 50%;
+            padding: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .icon-container {
+            background-color: #49274A;
+        }
+
+        .category-icon {
+            width: 100%;
+            height: auto;
+            max-height: 50px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover .category-icon {
+            filter: brightness(0) invert(1);
+        }
+
+        .category-card p {
+            margin-top: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #49274A;
+            transition: color 0.3s ease;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 992px) {
+            .category-row {
+                gap: 12px;
+            }
+            
+            .category-card {
+                width: 100px;
+                padding: 12px 8px;
+            }
+            
+            .icon-container {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .category-row {
+                gap: 10px;
+            }
+            
+            .category-card {
+                width: 90px;
+                padding: 10px 6px;
+            }
+            
+            .icon-container {
+                width: 50px;
+                height: 50px;
+                padding: 10px;
+            }
+            
+            .category-card p {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .category-row {
+                gap: 8px;
+            }
+            
+            .category-card {
+                width: 80px;
+            }
+        }
+    </style>
+</body>

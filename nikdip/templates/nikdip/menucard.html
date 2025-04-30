@@ -1,0 +1,164 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4 text-uppercase fw-bold" style="color: #49274A;" id="indian">Indian Cuisine</h2>
+    <div class="row justify-content-center">
+        {% for item in indian_cuisine %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card menu-card">
+                <img src="{{ item.menu_image.url }}" class="card-img-top" alt="Product Image">
+                <div class="card-body text-center" style="background-color: #F8EEE7;">
+                    <h5 class="card-title fw-bold" style="color: #49274A;">{{ item.name }}</h5>
+                    <p class="card-text" style="color: #94618E;">{{ item.description }}</p>
+                    <h5 class="fw-bold" style="color: #49274A;">₹{{ item.original_price }}</h5>
+                    <div class="d-flex justify-content-center gap-2">
+                        <a href="{% url 'buy_now' item.id 'indian' %}" class="btn btn-primary">
+                            <i class="fa fa-bolt"></i> Buy Now
+                        </a>
+                        <a href="{% url 'add_to_cart' item.id 'indian' %}" class="btn btn-secondary">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+  
+  <style>
+    <style>
+        .menu-card {
+            background: #F8EEE7;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(148, 97, 142, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            border: 1px solid #F4DECB;
+            position: relative;
+        }
+      
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(148, 97, 142, 0.2);
+        }
+      
+        .card-img-top {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 3px solid #94618E;
+            transition: transform 0.5s ease;
+        }
+        
+        .menu-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+      
+        .card-body {
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+      
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+      
+        .card-text {
+            font-size: 14px;
+            margin-bottom: 15px;
+            min-height: 40px;
+            font-style: italic;
+            color: #94618E;
+        }
+      
+        .btn {
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            border: none;
+        }
+      
+        .btn-primary {
+            background-color: #94618E;
+            color: #F8EEE7;
+        }
+      
+        .btn-primary:hover {
+            background-color: #49274A;
+            transform: scale(1.05);
+            color: #F4DECB;
+        }
+      
+        .btn-secondary {
+            background-color: #F4DECB;
+            color: #49274A;
+            border: 1px solid #94618E;
+        }
+      
+        .btn-secondary:hover {
+            background-color: #94618E;
+            color: #F8EEE7;
+            transform: scale(1.05);
+        }
+        
+        /* Food-themed enhancements */
+        .menu-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #94618E, #F4DECB, #94618E);
+        }
+        
+        .card-body::after {
+            content: "🍛";
+            position: absolute;
+            bottom: -10px;
+            right: 10px;
+            font-size: 24px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .menu-card:nth-child(odd) .card-body::after {
+            content: "🍴";
+        }
+        
+        .menu-card:nth-child(3n) .card-body::after {
+            content: "🌶️";
+        }
+        
+        .price-tag {
+            font-weight: bold;
+            color: #49274A;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .price-tag::before {
+            content: "₹";
+            font-size: 0.8em;
+            vertical-align: super;
+        }
+    
+        @media (max-width: 768px) {
+            .menu-card {
+                width: 100%;
+            }
+            
+            .btn {
+                padding:
+  </style>

@@ -1,0 +1,175 @@
+{% load static %}
+<header class="site-navbar navbar navbar-expand-lg" style="background-color: #49274A;">
+  <div class="container">
+    <img src="{% static 'nikdip/svg/nikdip-svg.svg' %}" alt="NikDip Logo" class="navbar-brand fw-bold" style="width: 50px; height: auto;">
+    
+    <a href="{% url 'home' %}" class="navbar-brand fw-bold" style="color: #F8EEE7;">
+      <span class="brand-name">NIK</span><span class="brand-name-dip">DIP</span>
+      <span class="brand-subtitle" style="font-size: 1rem; font-weight: 400; margin-left: 8px;">Spice Heaven</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav gap-3">
+         <li class="nav-item active">
+          <a href="{% url 'home' %}" class="nav-link" style="color: #F8EEE7;">
+            <img src="{% static 'nikdip/svg/home.svg' %}" alt="Home" width="20" height="20" style="margin-right: 8px; filter: invert(1);">
+            
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #F8EEE7;">
+            Menu
+          </a>
+          <ul class="dropdown-menu" style="background-color: #F8EEE7; border: 1px solid #94618E;">
+            <li><a class="dropdown-item" href="#indian" style="color: #49274A;">Indian Cuisine</a></li>
+            <li><a class="dropdown-item" href="#italian" style="color: #49274A;">Italian Cuisine</a></li>
+            <li><a class="dropdown-item" href="#dessert" style="color: #49274A;">Desserts</a></li>
+            <li><a class="dropdown-item" href="#snack" style="color: #49274A;">Snacks</a></li>
+            <li><a class="dropdown-item" href="#drink" style="color: #49274A;">Drinks</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'cart' %}" class="nav-link" style="color: #F8EEE7;">
+            <img src="{% static 'nikdip/svg/cart.svg' %}" alt="Cart" width="20" height="20" style="margin-right: 8px; filter: invert(1);">
+            
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="{% url 'contact' %}" class="nav-link" style="color: #F8EEE7;">
+            <img src="{% static 'nikdip/svg/contact.svg' %}" alt="Contact" width="20" height="20" style="margin-right: 8px; filter: invert(1);">
+            
+          </a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a href="{% url 'profile' %}" class="nav-link" style="color: #F8EEE7;">
+            <img src="{% static 'nikdip/svg/account.svg' %}" alt="Profile" width="20" height="20" style="margin-right: 8px; filter: invert(1);">
+            
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'logout' %}" class="nav-link" style="color: #F8EEE7;">
+            <img src="{% static 'nikdip/svg/logout.svg' %}" alt="Logout" width="20" height="20" style="margin-right: 8px; filter: invert(1);">
+            
+          </a>
+        </li>
+        {% else %}
+        <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link" style="color: #F8EEE7;">Sign-up</a></li>
+        <li class="nav-item"><a href="{% url 'login' %}" class="nav-link" style="color: #F8EEE7;">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-navbar {
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(73, 39, 74, 0.2);
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .brand-name {
+    font-weight: 600;
+  }
+  
+  .brand-name-dip {
+    font-weight: 700;
+    color: #94618E;
+  }
+
+  .brand-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #F4DECB;
+    position: relative;
+    padding-left: 12px;
+  }
+
+  .brand-subtitle::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60%;
+    width: 2px;
+    background-color: #F4DECB;
+  }
+  
+  .nav-link {
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+  }
+  
+  .nav-link:hover {
+    color: #F4DECB !important;
+    background-color: rgba(148, 97, 142, 0.3);
+  }
+  
+  .dropdown-menu {
+    min-width: 200px;
+    box-shadow: 0 5px 15px rgba(148, 97, 142, 0.2);
+  }
+  
+  .dropdown-item {
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #F4DECB;
+    color: #49274A !important;
+  }
+  
+  .navbar-toggler {
+    border-color: rgba(248, 238, 231, 0.5);
+  }
+  
+  @media (max-width: 992px) {
+    .navbar-nav {
+      padding-top: 15px;
+    }
+    
+    .nav-link {
+      padding: 10px 15px;
+    }
+    
+    .dropdown-menu {
+      border: none;
+      box-shadow: none;
+      background-color: rgba(73, 39, 74, 0.9);
+    }
+    
+    .dropdown-item {
+      color: #F8EEE7 !important;
+    }
+    
+    .dropdown-item:hover {
+      background-color: #94618E;
+    }
+
+    .brand-subtitle {
+      display: none; /* Hide on smaller screens if needed */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar-brand {
+      font-size: 1.3rem;
+    }
+  }
+</style>

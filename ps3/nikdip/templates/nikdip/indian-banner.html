@@ -1,0 +1,444 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Food Experiences - NIKDIP & CO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #94618E;
+            --primary-dark: #49274A;
+            --cream-light: #F8EEE7;
+            --cream-warm: #F4DECB;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #F4DECB; /* Updated background color */
+            color: var(--primary-dark);
+        }
+        
+        
+        .slider-container {
+            width: 100%;
+            height: 350px;
+            max-width: 900px;
+            margin: 40px auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(148, 97, 142, 0.2);
+            border-radius: 12px;
+            background-color: white;
+        }
+        
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .slide {
+            min-width: 100%;
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+        }
+        
+        .slide-content {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+        }
+        
+        .text-content {
+            flex: 1;
+            padding: 20px;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .image-container {
+            flex: 0 0 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+        
+        .image-shape {
+            width: 150px;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            filter: drop-shadow(0 3px 10px rgba(73, 39, 74, 0.3));
+        }
+        
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(148, 97, 142, 0.8);
+            color: var(--cream-light);
+            border: none;
+            padding: 12px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 18px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .prev {
+            left: 15px;
+        }
+        
+        .next {
+            right: 15px;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            font-size: 12px;
+            color: var(--cream-light);
+            background-color: rgba(73, 39, 74, 0.7);
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+        
+        .header {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .content {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        .content p {
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin: 10px 0 15px 0;
+            position: relative;
+            display: inline-block;
+            color: var(--primary-dark);
+        }
+        
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .page1 {
+            background: linear-gradient(135deg, var(--cream-light), var(--primary) 100%);
+            text-align: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .page1 h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+        
+        .page1 p {
+            font-size: 18px;
+            margin: 10px 0;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .website {
+            margin-top: 20px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* Image shapes */
+        .spices-shape {
+            background-image: url('https://images.unsplash.com/photo-1605870445919-838d190e8e1b');
+            border-radius: 20% 50% 20% 50%;
+            transform: rotate(10deg);
+        }
+        
+        .curry-shape {
+            background-image: url('https://images.unsplash.com/photo-1585937421612-70a008356fbe');
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+        
+        .bread-shape {
+            background-image: url('https://images.unsplash.com/photo-1601050690597-df0568f70950');
+            border-radius: 50% 20% 50% 20%;
+            transform: rotate(-5deg);
+        }
+        
+        .sweets-shape {
+            background-image: url('https://images.unsplash.com/photo-1563720223181-bc2e0e139f1e');
+            clip-path: circle(50% at 50% 50%);
+        }
+        
+        .region-shape {
+            background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c');
+            clip-path: ellipse(40% 50% at 50% 50%);
+        }
+        
+        .logo-shape {
+            background-color: rgba(148, 97, 142, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .logo-shape img {
+            width: 100%;
+            max-width: 120px;
+            filter: drop-shadow(0 2px 5px rgba(73, 39, 74, 0.3));
+        }
+        
+        @media (max-width: 768px) {
+            .slider-container {
+                height: 400px;
+            }
+            
+            .slide {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .image-container {
+                flex: 0 0 120px;
+                margin-bottom: 15px;
+            }
+            
+            .image-shape {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .text-content {
+                padding: 10px;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .page1 h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <!-- Page 1 - Cover -->
+            <div class="slide page1">
+                <div class="slide-content">
+                    <div class="image-container">
+                        <div class="image-shape logo-shape">
+                            <img src="{% static 'nikdip/svg/nikdip-svg.svg' %}" alt="NikDip Logo">
+                        </div>
+                    </div>
+                    <div class="text-content">
+                        <h1>NIKDIP & CO</h1>
+                        <p>INDIAN FOOD EXPERIENCES</p>
+                        <div class="website">www.NIKDIP.com</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Page 2 - Bold Spices -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="text-content">
+                        <div class="header">NIKDIP & CO</div>
+                        <h1>BOLD SPICES</h1>
+                        <div class="content">
+                            <p>The essence of Indian food lies in its bold, aromatic spices. Cumin, coriander, turmeric, and cardamom define India's culinary identity. These spices offer health benefits like anti-inflammatory and antioxidant properties.</p>
+                            <p>The art of blending spices ('ladka') involves cooking them in hot oil to release full flavor before adding to dishes.</p>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <div class="image-shape spices-shape"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Page 3 - Rich Curries -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="text-content">
+                        <div class="header">NIKDIP & CO</div>
+                        <h1>RICH CURRIES</h1>
+                        <div class="content">
+                            <p>Curries are the most iconic part of Indian cuisine. From creamy butter chicken to spicy vindaloo, they vary by region but always focus on deep, complex flavors.</p>
+                            <p>Northern curries are dairy-based with cream and yogurt, while southern versions are coconut-centric and intensely spicy.</p>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <div class="image-shape curry-shape"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Page 4 - Fluffy Breads -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="text-content">
+                        <div class="header">NIKDIP & CO</div>
+                        <h1>FLUFFY BREADS</h1>
+                        <div class="content">
+                            <p>Indian breads perfectly complement curries and dals. Naan is a soft, leavened flatbread cooked in a tandoor. Paratha is a layered, crispy flatbread that can be stuffed.</p>
+                            <p>Roti is the simplest bread made from flour and water, a staple in most Indian homes.</p>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <div class="image-shape bread-shape"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Page 5 - Sweet Treats -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="text-content">
+                        <div class="header">NIKDIP & CO</div>
+                        <h1>SWEET TREATS</h1>
+                        <div class="content">
+                            <p>Indian sweets are an indulgent experience. Gulab jamun are deep-fried dough balls soaked in syrup. Jalebi is a spiral-shaped, syrup-soaked dessert.</p>
+                            <p>Made with milk, sugar, and aromatic spices like cardamom and saffron, these sweets are integral to celebrations.</p>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <div class="image-shape sweets-shape"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Page 6 - Regional Flavors -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="text-content">
+                        <div class="header">NIKDIP & CO</div>
+                        <h1>REGIONAL FLAVORS</h1>
+                        <div class="content">
+                            <p>Indian cuisine varies dramatically by region. North India is famous for Mughal-style curries and tandoori dishes. South features coconut-centric dishes like dosa.</p>
+                            <p>Coastal regions focus on seafood, while western India is known for sweet and savory snacks.</p>
+                        </div>
+                    </div>
+                    <div class="image-container">
+                        <div class="image-shape region-shape"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="nav-btn prev">❮</button>
+        <button class="nav-btn next">❯</button>
+    </div>
+
+    <script>
+        const slides = document.querySelector('.slides');
+        const slideCount = document.querySelectorAll('.slide').length;
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let currentIndex = 0;
+        let autoSlideInterval;
+        
+        function updateSlider() {
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+        
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+                updateSlider();
+            }, 5000);
+        }
+        
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideCount - 1;
+            updateSlider();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+            updateSlider();
+            stopAutoSlide();
+            startAutoSlide();
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideCount - 1;
+                updateSlider();
+                stopAutoSlide();
+                startAutoSlide();
+            } else if (e.key === 'ArrowRight') {
+                currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+                updateSlider();
+                stopAutoSlide();
+                startAutoSlide();
+            }
+        });
+        
+        // Start auto-slide
+        startAutoSlide();
+        
+        // Pause on hover
+        document.querySelector('.slider-container').addEventListener('mouseenter', stopAutoSlide);
+        document.querySelector('.slider-container').addEventListener('mouseleave', startAutoSlide);
+    </script>
+</body>
+</html>

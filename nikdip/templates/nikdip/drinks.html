@@ -1,0 +1,122 @@
+<div class="beverages-container container mt-5" id='drink'>
+    <h2 class="text-center mb-4 text-uppercase fw-bold" style="color: #49274A;">Beverages</h2>
+    <div class="row justify-content-center">
+        {% for item in drinks %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card menu-card h-100">
+                <!-- EXACT SAME IMAGE CONTAINER AS ITALIAN CUISINE -->
+                <div class="position-relative" style="height: 220px; overflow: hidden;">
+                    <img src="{{ item.menu_image.url }}" 
+                         class="card-img-top w-100 h-100" 
+                         alt="{{ item.name }}"
+                         style="object-fit: cover; object-position: center;">
+                </div>
+                <div class="card-body text-center d-flex flex-column" style="background-color: #F8EEE7;">
+                    <h5 class="card-title fw-bold" style="color: #49274A;">{{ item.name }}</h5>
+                    <p class="card-text flex-grow-1" style="color: #94618E;">{{ item.description }}</p>
+                    <h5 class="fw-bold mb-3" style="color: #49274A;">₹{{ item.original_price }}</h5>
+                    <div class="d-flex justify-content-center gap-2">
+                        <a href="{% url 'buy_now' item.id 'drinks' %}" class="btn btn-primary">
+                            <i class="fa fa-bolt"></i> Buy Now
+                        </a>
+                        <a href="{% url 'add_to_cart' item.id 'drink' %}" class="btn btn-secondary">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+  
+  <style>
+    /* IDENTICAL STYLING TO ITALIAN CUISINE SECTION */
+    .beverages-container .menu-card {
+        background: #F8EEE7;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(148, 97, 142, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        border: 1px solid #F4DECB;
+    }
+  
+    .beverages-container .menu-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(148, 97, 142, 0.2);
+    }
+  
+    .beverages-container .card-img-top {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-bottom: 3px solid #94618E;
+        transition: transform 0.3s ease;
+    }
+  
+    .beverages-container .menu-card:hover .card-img-top {
+        transform: scale(1.05);
+    }
+  
+    /* REST OF THE STYLES MATCHING ITALIAN CUISINE */
+    .beverages-container .card-body {
+        padding: 20px;
+    }
+  
+    .beverages-container .card-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+  
+    .beverages-container .card-text {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+  
+    .beverages-container .btn {
+        padding: 10px 15px;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        border: none;
+    }
+  
+    .beverages-container .btn-primary {
+        background-color: #94618E;
+        color: #F8EEE7;
+    }
+  
+    .beverages-container .btn-primary:hover {
+        background-color: #49274A;
+        transform: scale(1.05);
+        color: #F4DECB;
+    }
+  
+    .beverages-container .btn-secondary {
+        background-color: #F4DECB;
+        color: #49274A;
+    }
+  
+    .beverages-container .btn-secondary:hover {
+        background-color: #94618E;
+        color: #F8EEE7;
+        transform: scale(1.05);
+    }
+  
+    @media (max-width: 768px) {
+        .beverages-container .menu-card {
+            width: 100%;
+        }
+        
+        .beverages-container .btn {
+            padding: 8px 12px;
+            font-size: 13px;
+        }
+    }
+  </style>

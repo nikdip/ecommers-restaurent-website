@@ -1,0 +1,9 @@
+{% extends 'nikdip/base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h2>Payment Canceled</h2>
+    <p>Your transaction was not completed. Please try again.</p>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Go to Home</a>
+</div>
+{% endblock %}

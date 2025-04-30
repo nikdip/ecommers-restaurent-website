@@ -1,0 +1,226 @@
+{% extends 'nikdip/base.html' %}
+
+{% block content %}
+<div class="profile-container mt-5">
+    <div class="profile-row">
+        <!-- Sidebar Menu -->
+        <div class="profile-sidebar">
+            <div class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="{% url 'edit_profile' %}" class="menu-item">
+                    <i class="fas fa-edit"></i>
+                    <span>Edit Profile</span>
+                </a>
+                <a href="{% url 'change_password' %}" class="menu-item">
+                    <i class="fas fa-key"></i>
+                    <span>Change Password</span>
+                </a>
+                <a href="{% url 'order_status' %}" class="menu-item">
+                    <i class="fas fa-truck"></i>
+                    <span>Order Status</span>
+                </a>
+                <a href="{% url 'order_history' %}" class="menu-item">
+                    <i class="fas fa-history"></i>
+                    <span>Order History</span>
+                </a>
+                <a href="{% url 'logout' %}" class="menu-item text-danger">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Profile Details -->
+        <div class="profile-content">
+            <div class="profile-card">
+                <h2 class="profile-title">User Profile</h2>
+                <div class="profile-header">
+                    <img src="{{ user.profile.image.url }}" alt="Profile Picture" class="profile-image">
+                    <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+                    <p>@{{ user.username }}</p>
+                </div>
+                
+                <div class="profile-details">
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" value="{{ user.email }}" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Username:</label>
+                        <input type="text" value="{{ user.username }}" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number:</label>
+                        <input type="text" value="{{ user.profile.phone }}" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Address:</label>
+                        <input type="text" value="{{ user.profile.address }}" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Base Structure - Matches your original layout */
+    .profile-container {
+        width: 100%;
+        min-height: calc(100vh - 120px); /* Adjust based on your navbar/footer height */
+        padding: 20px 0;
+    }
+
+    .profile-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+    }
+
+    /* Sidebar Styles - Restructured but same visual appearance */
+    .profile-sidebar {
+        flex: 0 0 25%;
+        max-width: 25%;
+        padding: 0 15px;
+    }
+
+    .sidebar-menu {
+        background-color: #F4DECB;
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        color: #333;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .menu-item i {
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
+    }
+
+    .menu-item:hover {
+        background-color: #94618E;
+        color: white;
+    }
+
+    .menu-item.active {
+        background-color: #49274A;
+        color: white;
+    }
+
+    .menu-item.text-danger {
+        color: #dc3545;
+    }
+
+    .menu-item.text-danger:hover {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    /* Content Area - Restructured but same visual appearance */
+    .profile-content {
+        flex: 0 0 75%;
+        max-width: 75%;
+        padding: 0 15px;
+    }
+
+    .profile-card {
+        background-color: #F8EEE7;
+        border: 1px solid #94618E;
+        border-radius: 10px;
+        padding: 30px;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+    }
+
+    .profile-title {
+        text-align: center;
+        color: #49274A;
+        margin-bottom: 25px;
+    }
+
+    .profile-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #94618E;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .profile-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Form Elements - Restructured but same visual appearance */
+    .profile-details {
+        margin-top: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #49274A;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #94618E;
+        border-radius: 8px;
+        background-color: #F4DECB;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+        background-color: #F8EEE7;
+        box-shadow: 0 0 5px 2px rgba(73, 39, 74, 0.3);
+        outline: none;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .profile-sidebar,
+        .profile-content {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .profile-sidebar {
+            margin-bottom: 30px;
+        }
+    }
+</style>
+{% endblock %}
