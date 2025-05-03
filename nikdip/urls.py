@@ -65,6 +65,7 @@ urlpatterns = [
     
     #==================================== PayPal Buy Now url ======================================
     path('buy-now/<int:item_id>/<str:category>/', views.buy_now, name='buy_now'),
+    path('checkout-all/', views.checkout_all, name='checkout_all'),
     path('payment-success/', views.payment_success, name='payment_success'),
     path('payment-cancel/', views.payment_cancel, name='payment_cancel'),
 

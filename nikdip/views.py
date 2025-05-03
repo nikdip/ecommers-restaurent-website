@@ -20,6 +20,7 @@ from django.conf import settings
 import uuid
 from django.urls import reverse
 from django.db import transaction
+import time
 
 
 
@@ -405,3 +406,28 @@ def payment_cancel(request):
     messages.error(request, "Payment was canceled. Please try again.")
     return render(request, 'nikdip/payment_cancel.html')
 
+
+
+@login_required
+def checkout_all(request):
+    cart_items = Cart.objects.filter(user=request.user)
+    if not cart_items.exists():
+        return redirect('cart')
+    
+    # Calculate total amount
+    total = sum(item.item_price * item.quantity for item in cart_items)
+    
+    # Create a PayPal payment for the total amount
+    paypal_dict = {
+        "business": settings.PAYPAL_RECEIVER_EMAIL,
+        "amount": total,
+        "item_name": "Complete Order from NikDip",
+        "invoice": f"INV-{request.user.id}-{int(time.time())}",
+        "currency_code": "INR",
+        "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
+        "return_url": request.build_absolute_uri(reverse('payment_success')),
+        "cancel_return": request.build_absolute_uri(reverse('payment_cancel')),
+    }
+    
+    form = PayPalPaymentsForm(initial=paypal_dict)
+    return render(request, 'nikdip/checkout-all.html', {'form': form, 'total': total})

@@ -134,6 +134,9 @@ PAYPAL_RECEIVER_EMAIL = 'sb-djz7r39051025@business.example.com'
 PAYPAL_TEST = True
 
 
+LOGIN_URL = '/login/'
+
+
 
 
 

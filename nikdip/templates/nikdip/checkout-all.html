@@ -1,0 +1,11 @@
+{% extends 'nikdip/base.html' %}
+
+{% block content %}
+<div class="container text-center py-5">
+    <h2 class="mb-4">Complete Your Order</h2>
+    <p class="lead">Total Amount: ₹{{ total }}</p>
+    <div class="d-flex justify-content-center">
+        {{ form.render }}
+    </div>
+</div>
+{% endblock %}

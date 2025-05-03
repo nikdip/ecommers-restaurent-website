@@ -36,13 +36,70 @@
         </tbody>
     </table>
 
-    <div class="d-flex justify-content-between align-items-center">
-        <h4 class="fw-bold" style="color: #49274A;">Total Amount:</h4>
-        <h4 class="text-success fw-bold">₹{{ total_price }}</h4>
-        {{ form.render }}
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <a href="{% url 'home' %}" class="btn btn-outline-primary">
+                <i class="fas fa-arrow-left"></i> Continue Shopping
+            </a>
+        </div>
+        <div class="col-md-6 text-end">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="fw-bold mb-0" style="color: #49274A;">Total Amount:</h4>
+                <h4 class="text-success fw-bold mb-0">₹{{ total_price }}</h4>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <!-- PayPal Checkout Button -->
+                {{ form.render }}
+                <!-- Combined Checkout Button -->
+                <a href="{% url 'checkout_all' %}" class="btn btn-success btn-lg">
+                    <i class="fas fa-credit-card"></i> Checkout All Items
+                </a>
+            </div>
+        </div>
     </div>
     {% else %}
-    <p class="text-center mt-4 fw-bold" style="color: #49274A;">Your cart is empty.</p>
+    <div class="text-center py-5">
+        <i class="fas fa-shopping-cart fa-4x mb-3" style="color: #94618E;"></i>
+        <h4 class="fw-bold" style="color: #49274A;">Your cart is empty</h4>
+        <p class="text-muted">Start adding some delicious items!</p>
+        <a href="{% url 'home' %}" class="btn btn-primary mt-3">
+            <i class="fas fa-utensils"></i> Browse Menu
+        </a>
+    </div>
     {% endif %}
 </div>
+
+<style>
+    .table {
+        background-color: white;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+    
+    .table-dark {
+        background-color: #49274A !important;
+    }
+    
+    .btn-success {
+        background-color: #94618E;
+        border-color: #94618E;
+        transition: all 0.3s;
+    }
+    
+    .btn-success:hover {
+        background-color: #49274A;
+        border-color: #49274A;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-outline-primary {
+        color: #49274A;
+        border-color: #49274A;
+    }
+    
+    .btn-outline-primary:hover {
+        background-color: #49274A;
+        color: white;
+    }
+</style>
 {% endblock %}
