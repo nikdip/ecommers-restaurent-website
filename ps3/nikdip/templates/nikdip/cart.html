@@ -1,0 +1,50 @@
+{% extends 'nikdip/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="text-center">Your Cart</h2>
+  
+  {% if cart_items %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart_items %}
+      <tr>
+        <td>{{ item.item_name }}</td>
+        <td><img src="{{ item.item_image.url }}" width="50"></td>
+        <td>₹{{ item.item_price }}</td>
+        <td>
+          <a href="{% url 'decrease_quantity' item.id %}" class="btn btn-sm btn-outline-secondary">-</a>
+          <span class="mx-2">{{ item.quantity }}</span>
+          <a href="{% url 'increase_quantity' item.id %}" class="btn btn-sm btn-outline-secondary">+</a>
+        </td>
+        
+        
+        <td>₹{{ item.item_price|floatformat:2 }}</td>
+        <td>
+          <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger btn-sm">Remove</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h4 class="text-end">Total: ₹{{ total_price }}</h4>
+  <div class="text-end">
+    <a href="#" class="btn btn-success">Proceed to Checkout</a>
+  </div>
+
+  {% else %}
+  <p class="text-center">Your cart is empty.</p>
+  {% endif %}
+</div>
+{% endblock %}

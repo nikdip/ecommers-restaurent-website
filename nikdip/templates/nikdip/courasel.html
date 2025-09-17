@@ -1,0 +1,39 @@
+
+{% load static %}
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+      <!-- Slide 1: Welcome Section -->
+      <div class="carousel-item active" style="background-image: url('{% static 'nikdip/images/front.jpg' %}');">
+          <section class="home">
+              <div class="content">
+                  <h2>Welcome to <span>NikDip Restaurant</span></h2>
+                  <h4>Your Culinary Journey Starts Here</h4>
+                  <p>"Food is not just about nutrition. It's an experience. At NikDip, we blend flavors, tradition, and innovation to create memorable meals that bring people together."</p>
+                  
+                  <div class="btn-group">
+                      <a href="login.html">Let's join with Us</a>
+                  </div>
+              </div>
+          </section>
+      </div>
+
+      <!-- Slide 2: Image Background -->
+      <div class="carousel-item" style="background-image: url('{% static 'nikdip/images/2slide.jpg' %}');">
+      </div>
+
+      <!-- Slide 3: Image Background -->
+      <div class="carousel-item" style="background-image: url('{% static 'nikdip/images/3slide.jpg' %}');">
+      </div>
+    
+  </div>
+</div>
+<style>
+
+  #carouselExampleSlidesOnly {
+    border: none !important;  /* Removes any border */
+    box-shadow: none !important;  /* Removes any box shadow */
+}
+
+</style>

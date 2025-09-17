@@ -1,0 +1,32 @@
+{% extends 'nikdip/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Order History</h2>
+    <div class="row">
+        {% for order in orders %}
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Order #{{ order.id }} - {{ order.status }}</h4>
+                    <p><strong>Date:</strong> {{ order.order_date }}</p>
+                    <p><strong>Total Price:</strong> ${{ order.total_price }}</p>
+                </div>
+                <div class="card-body">
+                    <h5>Items in this order:</h5>
+                    <ul>
+                        {% for item in order.items.all %}
+                        <li>{{ item.item_name }} - ${{ item.item_price }} x {{ item.quantity }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-md-12">
+            <p>You have not placed any orders yet.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

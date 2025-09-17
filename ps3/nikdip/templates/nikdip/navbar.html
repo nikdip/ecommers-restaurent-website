@@ -1,0 +1,44 @@
+{% load static %}
+<header class="site-navbar navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <img src="{% static 'nikdip/svg/nikdip-svg.svg' %}" alt="NikDip Logo" class="navbar-brand fw-bold" style="width: 50px; height: auto;">
+
+    <a href="{% url 'home' %}" class="navbar-brand fw-bold"><span class="brand-name">NIK</span><span class="brand-name-dip">DIP</span></a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav gap-3">
+        <li class="nav-item active"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Menu
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+            <li><a class="dropdown-item" href="#">Indian Cuisine</a></li>
+            <li><a class="dropdown-item" href="{% url 'italian' %}">Italian Cuisine</a></li>
+            <li><a class="dropdown-item" href="#">Desserts</a></li>
+            <li><a class="dropdown-item" href="#">Snacks</a></li>
+            <li><a class="dropdown-item" href="#">Drinks</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'cart' %}" class="nav-link">
+            <img src="{% static 'nikdip/svg/shopping-cart.svg' %}" alt="Cart" width="20" height="20" style="margin-right: 8px;">
+            My Cart
+          </a>
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+        {% if user.is_authenticated %}
+        <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link">Profile</a></li>
+        <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+        {% else %}
+        <li class="nav-item"><a href="{% url 'signup' %}" class="nav-link">Sign-up</a></li>
+        <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</header>

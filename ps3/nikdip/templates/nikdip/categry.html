@@ -1,0 +1,75 @@
+<body>
+    {% load static %}
+    <section class="py-5 bg-light text-center">
+        <div class="container">
+            <h3 class="mb-4 fw-bold">Shop by Categories</h3>
+            <div class="category-row">
+                <div class="category-card">
+                    <img src="{% static 'nikdip/svg/coffee.svg' %}" alt="Coffee" class="category-icon">
+                    <p>Coffee & Tea</p>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'nikdip/svg/fruit-svg.svg' %}" alt="Fruits" class="category-icon">
+                    <p>Fruits</p>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'nikdip/svg/veg.svg' %}" alt="Vegetarian" class="category-icon">
+                    <p>Vegetarian</p>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'nikdip/svg/drinks.svg' %}" alt="Drinks" class="category-icon">
+                    <p>Drinks</p>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'nikdip/svg/bakery.svg' %}" alt="Bakery" class="category-icon">
+                    <p>Bakery</p>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'nikdip/svg/snacks.svg' %}" alt="Snacks" class="category-icon">
+                    <p>Snacks</p>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'nikdip/svg/dairy.svg' %}" alt="Dairy" class="category-icon">
+                    <p>Dairy</p>
+                </div>
+                <div class="category-card">
+                    <img src="{% static 'nikdip/svg/fish.svg' %}" alt="Fast Food" class="category-icon">
+                    <p>Fast Food</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* One-line Layout */
+        .category-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Space between cards */
+            flex-wrap: nowrap; /* No wrapping, stays in one line */
+        }
+
+        /* Category Card */
+        .category-card {
+            width: 120px;
+            height: auto;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* SVG Icon */
+        .category-icon {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* Category Name */
+        .category-card p {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</body>

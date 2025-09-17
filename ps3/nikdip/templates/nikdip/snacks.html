@@ -1,0 +1,23 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Snacks</h2>
+    <div class="row">
+      {% for item in  snacks%}
+      <div class="col-md-4 mb-4">
+        <div class="card" style="width: 18rem;">
+          <img src="{{ item.menu_image.url }}" class="card-img-top" alt="Product Image">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">{{ item.description }}</p>
+            <h5 class="text-danger">₹{{ item.original_price }}</h5>
+            <a href="{% url 'buy_now' item.id 'snack' %}" class="btn btn-primary">Buy Now</a>
+            <a href="{% url 'add_to_cart' item.id 'snack' %}" class="btn btn-secondary">Add to Cart</a>
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+  
+  

@@ -1,0 +1,29 @@
+{% extends 'nikdip/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Buy Now</h2>
+
+    <div class="card mx-auto" style="width: 30rem;">
+        <!-- Product Image -->
+        <img src="{{ item.menu_image.url }}" class="card-img-top" alt="{{ item.name }}">
+
+        <div class="card-body">
+            <!-- Product Name -->
+            <h5 class="card-title">{{ item.name }}</h5>
+            
+            <!-- Product Description -->
+            <p class="card-text">{{ item.description }}</p>
+            
+            <!-- Product Price -->
+            <p class="card-text"><strong>Price:</strong> ₹{{ item.original_price }}</p>
+
+            <!-- Product Category -->
+            <p class="card-text"><strong>Category:</strong> {{ category|title }}</p>
+
+            <!-- PayPal Payment Form -->
+         {{form.render}}
+        </div>
+    </div>
+</div>
+{% endblock %}
