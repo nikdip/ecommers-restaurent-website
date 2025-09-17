@@ -36,21 +36,16 @@
         </tbody>
     </table>
 
-<<<<<<< HEAD
     <div class="d-flex justify-content-between align-items-center">
         <h4 class="fw-bold" style="color: #49274A;">Total Amount:</h4>
         <h4 class="text-success fw-bold">₹{{ total_price }}</h4>
         <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Pay with PayPal</button>
-</form>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Pay with PayPal</button>
+        </form>
+    </div>
 
-    
-    {% endif %}
-</div>
-{% endblock %}
-=======
     <div class="row mt-4">
         <div class="col-md-6">
             <a href="{% url 'home' %}" class="btn btn-outline-primary">
@@ -72,6 +67,7 @@
             </div>
         </div>
     </div>
+
     {% else %}
     <div class="text-center py-5">
         <i class="fas fa-shopping-cart fa-4x mb-3" style="color: #94618E;"></i>
@@ -82,6 +78,7 @@
         </a>
     </div>
     {% endif %}
+
 </div>
 
 <style>
@@ -118,4 +115,3 @@
     }
 </style>
 {% endblock %}
->>>>>>> a45a1596b62a0e7826ceda3ea5a1bc3cde4f42ca

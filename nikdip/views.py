@@ -20,10 +20,10 @@ from django.conf import settings
 import uuid
 from django.urls import reverse
 from django.db import transaction
-<<<<<<< HEAD
-=======
+
+
 import time
->>>>>>> a45a1596b62a0e7826ceda3ea5a1bc3cde4f42ca
+
 
 
 
@@ -409,8 +409,7 @@ def payment_cancel(request):
     messages.error(request, "Payment was canceled. Please try again.")
     return render(request, 'nikdip/payment_cancel.html')
 
-<<<<<<< HEAD
-=======
+
 
 
 @login_required
@@ -436,4 +435,4 @@ def checkout_all(request):
     
     form = PayPalPaymentsForm(initial=paypal_dict)
     return render(request, 'nikdip/checkout-all.html', {'form': form, 'total': total})
->>>>>>> a45a1596b62a0e7826ceda3ea5a1bc3cde4f42ca
+
