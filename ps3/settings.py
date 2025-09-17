@@ -23,8 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-((k$9((s6k6x8f&fv35zh@$=83#z$v+8jg%llszp8-rlx^#_g='
 
 # SECURITY WARNING: don't run with debug turned on in production!
+<<<<<<< HEAD
 DEBUG = False
 ALLOWED_HOSTS = ['nikdip.onrender.com']
+=======
+DEBUG = True
+
+ALLOWED_HOSTS = []
+>>>>>>> a45a1596b62a0e7826ceda3ea5a1bc3cde4f42ca
 
 
 # Application definition
@@ -115,9 +121,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+<<<<<<< HEAD
 import os
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+=======
+
+STATIC_URL = 'static/'
+>>>>>>> a45a1596b62a0e7826ceda3ea5a1bc3cde4f42ca
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -134,6 +145,12 @@ PAYPAL_RECEIVER_EMAIL = 'sb-djz7r39051025@business.example.com'
 PAYPAL_TEST = True
 
 
+<<<<<<< HEAD
+=======
+LOGIN_URL = '/login/'
+
+
+>>>>>>> a45a1596b62a0e7826ceda3ea5a1bc3cde4f42ca
 
 
 
